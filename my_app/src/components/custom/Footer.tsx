@@ -3,12 +3,13 @@ import "./Footer.css"
 import { BsTwitter,BsYoutube  } from "react-icons/bs";
 import { SiLinkedin } from "react-icons/si";
 import { FaFacebookF } from "react-icons/fa";
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 
 const Footer = () => {
   return (
-    <div className="footer-wrapper">
-      <div className="footer-section-one flex pl-5 gap-32 items-center">
+    <div className="footer-wrapper  bg-white shadow-[0px_-5px_5px_rgba(0,0,0,0.1)] pt-10">
+      <div className="footer-section-one flex pl-5 gap-32 items-center ">
         <div className="footer-logo-container">
           <img src={Logo} alt="" />
         </div>
