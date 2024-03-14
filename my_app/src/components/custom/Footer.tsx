@@ -3,7 +3,7 @@ import "./Footer.css"
 import { BsTwitter,BsYoutube  } from "react-icons/bs";
 import { SiLinkedin } from "react-icons/si";
 import { FaFacebookF } from "react-icons/fa";
-import { ScrollArea } from "@/components/ui/scroll-area"
+
 
 
 const Footer = () => {

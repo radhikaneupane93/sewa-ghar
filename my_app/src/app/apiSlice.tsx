@@ -19,9 +19,6 @@ export const apiSlice = createApi({
   reducerPath: "api",
   endpoints: () => ({}),
   tagTypes: [
-    "Users",
-    "Vehicle",
-    "Auth",
-    "Hotel",
+    "Users"
   ],
 });
