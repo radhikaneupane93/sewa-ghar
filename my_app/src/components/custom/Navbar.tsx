@@ -28,7 +28,7 @@ const Navbar = () => {
       <div onClick={() => navigate("/")} className="h-full">
         <img className="h-[60px]" src={Logo} alt="" />
       </div>
-      <div className="flex gap-12 font-semibold ">
+      <div className="flex gap-12 font-semibold cursor-pointer">
         <p onClick={() => navigate("/about")}>About</p>
         <p onClick={() => navigate("/testimonial")}>Testimonial</p>
         <p onClick={() => navigate("/contact")}>Contact</p>
@@ -78,17 +78,14 @@ const Navbar = () => {
                 My Profile
               </MenuItem>
               <MenuItem
-                onClick={() => {
-                  handleClose();
-                  navigate("/rewards");
-                }}
+                onClick={() => navigate("/Leaderboard")}
               >
                 Rewards
               </MenuItem>
               <MenuItem
                 onClick={() => {
                   handleClose();
-                  navigate("/volunteering");
+                  navigate("/Leaderboard");
                 }}
               >
                 Volunteering

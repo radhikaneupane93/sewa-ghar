@@ -9,6 +9,8 @@ import {
     Work,
     Login,
     Signup,
+    Donation,
+    Leaderboard
     
 } from "./pages";
 
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
             {
                 path:"/Work",
                 element:<Work />
+            },
+            {
+                path:"/Donation",
+                element:<Donation />
+            },
+            {
+                path:"/Leaderboard",
+                element:<Leaderboard />
             }
         ]
     },

@@ -7,5 +7,6 @@ import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
 import Donation from "@/pages/Donation";
 import Volunteering from "@/pages/Volunteering";
+import Leaderboard from "@/pages/Leaderboard";
 
-export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering}
+export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard}
