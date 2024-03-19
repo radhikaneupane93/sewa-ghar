@@ -8,5 +8,6 @@ import Signup from "@/pages/Signup";
 import Donation from "@/pages/Donation";
 import Volunteering from "@/pages/Volunteering";
 import Leaderboard from "@/pages/Leaderboard";
+import Reward from "@/pages/Reward";
 
-export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard}
+export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard,Reward}

@@ -50,9 +50,9 @@ const Leaderboard: React.FC = () => {
       <div className="mt-10 max-w-lg mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-center text-red-600">Our Leaderboard</h2>
 
-        <div className="flex justify-center gap-10 p-4">
+        <div className="flex justify-center gap-10 p-4">                                                                                                                                                                      
           {topUsers.map((user) => (
-            <div key={user.id} className="bg-white shadow-lg rounded-lg overflow-hidden mx-4 max-w-full max-h-full">
+            <div key={user.id} className="bg-white shadow-lg rounded-lg overflow-hidden mx-4 max-w-full max-                                                                                                    h-full">
               <div className="bg-orange-400 py-3 px-5 font-bold text-white text-center">
                 {user.rank} Place
               </div>

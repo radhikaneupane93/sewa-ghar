@@ -10,6 +10,7 @@ const Donation = () => {
   const [gender, setGender] = useState("");
   const [clothtype, setClothtype] = useState("");
   const [description, setDescription] = useState("");
+  const [location, setLocation] = useState(""); 
 
   const navigate = useNavigate();
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -22,12 +23,14 @@ const Donation = () => {
       gender,
       clothtype,
       description,
+      location, 
     });
     setName("");
     setEmail("");
     setGender("");
     setClothtype("");
     setDescription("");
+    setLocation(""); 
   };
 
   const handleLogin = () => {
@@ -118,9 +121,33 @@ const Donation = () => {
               required
             />
           </div>
+          <div className="mb-4">
+            <label
+              htmlFor="location"
+              className="block text-sm font-semibold mb-1"
+            >
+              Donation Location:
+            </label>
+            <select
+              id="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="w-full border rounded px-4 py-2"
+              required
+            >
+              <option value="">Select Location</option>
+              <option value="Upcycle Nepal - Revive, Chittadhar Marg, Bangemuddha, Kathmandu 44600">Upcycle Nepal - Revive, Chittadhar Marg, Bangemuddha, Kathmandu 44600</option>
+              <option value="Public Cloth bank, M8HJ+QR4, Unnamed Road, Kathmandu 44600">Public Cloth bank, M8HJ+QR4, Unnamed Road, Kathmandu 44600</option>
+              <option value="Clothes Bank Sherpa (Thrift Clothes Shop), P9CC+548, Gokarneshwor 44600">Clothes Bank Sherpa (Thrift Clothes Shop), P9CC+548, Gokarneshwor 44600</option>
+              <option value="Sukhawati Charity Store, Kathmandu 44600">Sukhawati Charity Store, Kathmandu 44600</option>
+              <option value="Sukhawati Store, P7CR+GWJ, Kathmandu 44600">Sukhawati Store, P7CR+GWJ, Kathmandu 44600</option>
+              <option value="Action Works Nepal, Kathmandu 44600">Action Works Nepal, Kathmandu 44600</option>
+              <option value="Aroan Nepal - KC Complex, Second Floor, Kathmandu 44600">Aroan Nepal - KC Complex, Second Floor, Kathmandu 44600</option>
+            </select>
+          </div>
           <div className="flex flex-col justify-center items-center">
             <Button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/Reward")}
               className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 items-center"
             >
               Donate

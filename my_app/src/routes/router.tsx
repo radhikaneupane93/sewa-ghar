@@ -10,7 +10,8 @@ import {
     Login,
     Signup,
     Donation,
-    Leaderboard
+    Leaderboard,
+    Reward,
     
 } from "./pages";
 
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
             {
                 path:"/Leaderboard",
                 element:<Leaderboard />
-            }
+            },
+            {
+                path:"/Reward",
+                element:<Reward />
+            },
         ]
     },
     {

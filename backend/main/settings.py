@@ -50,7 +50,7 @@ INSTALLED_APPS = [
    
 ]
 
-SITE_ID = 1 
+SITE_ID = 2
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -166,6 +166,11 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
     
 ]
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_UNIQUE_EMAIL = True
 
 LOGIN_REDIRECT_URL="/"
 LOGOUT_REDIRECT_URL="/"

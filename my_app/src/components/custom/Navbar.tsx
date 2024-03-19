@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex fixed top-0 bg-white shadow-md p-5 px-18 max-h-[%60] overflow-hidden w-full justify-between items-center">
-      <div onClick={() => navigate("/")} className="h-full">
+      <div onClick={() => navigate("/")} className="h-full cursor-pointer">
         <img className="h-[60px]" src={Logo} alt="" />
       </div>
       <div className="flex gap-12 font-semibold cursor-pointer">
