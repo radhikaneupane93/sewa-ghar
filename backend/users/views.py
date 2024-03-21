@@ -6,11 +6,6 @@ from .serailizer import CustomUserSerilizer,LoginSerilizer
 from rest_framework.response import Response
 from .serailizer import LoginSerilizer
 from django.contrib.auth import authenticate
-# from rest_framework.exceptions import AuthenticationFailed
-# from django.http import HttpResponse
-# from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
-# from allauth.socialaccount.providers.oauth2.client import OAuth2Client
-# from dj_rest_auth.registration.views import SocialLoginView
 
 #Create your views here.
 class CustomUserViewSet(viewsets.ModelViewSet):
@@ -38,16 +33,3 @@ class LoginViewSet(viewsets.ViewSet):
                 raise AuthenticationFailed("Invalid Email or Password")
             return Response(serailizer.data,status=status.HTTP_201_CREATED)
         return Response(serailizer.errors,status=status.HTTP_400_BAD_REQUEST)
-    
-# class GoogleLogin(SocialLoginView): # if you want to use Authorization Code Grant, use this
-#     adapter_class = GoogleOAuth2Adapter
-#     callback_url = "http://127.0.0.1:3000"
-#     client_class = OAuth2Client
-
-# class GoogleLogin(SocialLoginView): # if you want to use Implicit Grant, use this
-#     adapter_class = GoogleOAuth2Adapter
-
-    
-           
-    
-    

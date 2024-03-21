@@ -32,6 +32,10 @@ const Login = () => {
      toast.error('Something went Wrong')
    })
  }
+ const handleGoogleLogin = () => {
+  window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=412234909744-1u7pt7qvsr0o6te1cvipjuvor4iiov82.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=email%20profile&response_type=code&state=fZpgEcadELaay0wR&service=lso&o2v=2&theme=glif&ddm=0&flowName=GeneralOAuthFlow';
+};
+
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
@@ -62,7 +66,7 @@ const Login = () => {
        <button onClick={onSubmit} className="block w-full bg-orange-500 text-white py-2 rounded-md mb-4">
           Login
         </button>
-        <button className="ml-2 flex items-center bg-gray-100 py-2 px-4 rounded-md mb-4">
+        <button onClick={handleGoogleLogin} className="ml-2 flex items-center bg-gray-100 py-2 px-4 rounded-md mb-4">
           <GoogleIcon />
           <span className="ml-2">Login with Google</span>
         </button>
