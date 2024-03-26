@@ -48,22 +48,23 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'donation',
+    'banks',
 ]
 
 SITE_ID = 2
 
-# SOCIALACCOUNT_PROVIDERS = {
-#    'google': {
-#         # For each OAuth based provider, either add a ``SocialApp``
-#         # (``socialaccount`` app) containing the required client
-#         # credentials, or list them here:
-#         'APP': {
-#             'client_id': '412234909744-1u7pt7qvsr0o6te1cvipjuvor4iiov82.apps.googleusercontent.com',
-#             'secret': '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',
-#             'key': ''
-#         }
-#     }
-# }
+SOCIALACCOUNT_PROVIDERS = {
+   'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '412234909744-1u7pt7qvsr0o6te1cvipjuvor4iiov82.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
 
 
 MIDDLEWARE = [

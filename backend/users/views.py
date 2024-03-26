@@ -6,6 +6,8 @@ from .serailizer import CustomUserSerilizer,LoginSerilizer
 from rest_framework.response import Response
 from .serailizer import LoginSerilizer
 from django.contrib.auth import authenticate
+from rest_framework.exceptions import AuthenticationFailed
+
 
 #Create your views here.
 class CustomUserViewSet(viewsets.ModelViewSet):
