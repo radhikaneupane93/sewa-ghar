@@ -72,7 +72,7 @@ const Navbar = () => {
               <MenuItem
                 onClick={() => {
                   handleClose();
-                  navigate("/myprofile");
+                  navigate("/Profile");
                 }}
               >
                 My Profile
@@ -85,7 +85,7 @@ const Navbar = () => {
               <MenuItem
                 onClick={() => {
                   handleClose();
-                  navigate("/Leaderboard");
+                  navigate("/Volunteering");
                 }}
               >
                 Volunteering

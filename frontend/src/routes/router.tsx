@@ -12,6 +12,8 @@ import {
     Donation,
     Leaderboard,
     Reward,
+    Volunteering,
+    Profile
     
 } from "./pages";
 
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
             {
                 path:"/Reward",
                 element:<Reward />
+            },
+            {
+                path:"/Volunteering",
+                element:<Volunteering />
+            },
+            {
+                path:"/Profile",
+                element:<Profile />
             },
         ]
     },
