@@ -13,7 +13,9 @@ import {
     Leaderboard,
     Reward,
     Volunteering,
-    Profile
+    Profile,
+    GoogleCallback,
+    
     
 } from "./pages";
 
@@ -62,6 +64,7 @@ const router = createBrowserRouter([
                 path:"/Profile",
                 element:<Profile />
             },
+            
         ]
     },
     {
@@ -71,6 +74,13 @@ const router = createBrowserRouter([
     {
         path:"/Signup",
         element:<Signup/>
+    },
+    {
+        path: "/auth/google/callback",
+        element: <GoogleCallback />
+    },
+    {
+        
     }
 ])
 

@@ -10,6 +10,7 @@ import Volunteering from "@/pages/Volunteering";
 import Leaderboard from "@/pages/Leaderboard";
 import Reward from "@/pages/Reward";
 import Profile from "@/pages/Profile";
+import GoogleCallback from "@/pages/GoogleCallback";
 
 
-export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard,Reward,Profile}
+export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard,Reward,Profile,GoogleCallback}
