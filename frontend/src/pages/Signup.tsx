@@ -6,8 +6,8 @@ import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password1, setPassword] = useState('');
+  const [password2, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -19,19 +19,19 @@ const SignUp = () => {
       return;
     }
 
-    if (!passwordRegex.test(password)) {
+    if (!passwordRegex.test(password1)) {
       toast.error('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit');
       return;
     }
 
-    if (password !== confirmPassword) {
+    if (password1 !== password2) {
       toast.error('Passwords do not match');
       return;
     }
 
     const formData = {
       email,
-      password,
+      password1,
     };
 
     axios.post('http://127.0.0.1:8000/auth/registration/', formData)
@@ -60,14 +60,14 @@ const SignUp = () => {
         <input
           type="password"
           placeholder="Password"
-          value={password}
+          value={password1}
           onChange={(e) => setPassword(e.target.value)}
           className="block w-full px-4 py-2 border border-gray-300 rounded-md mb-4"
         />
         <input
           type="password"
           placeholder="Confirm Password"
-          value={confirmPassword}
+          value={password2}
           onChange={(e) => setConfirmPassword(e.target.value)}
           className="block w-full px-4 py-2 border border-gray-300 rounded-md mb-4"
         />
