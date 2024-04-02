@@ -4,4 +4,4 @@ from .models import Donation
 class DonationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Donation
-        fields = ['id', 'name', 'email', 'gender', 'clothtype', 'description', 'location']
+        fields = ['id', 'name', 'email', 'gender', 'clothtype', 'description', 'bankLocation']
