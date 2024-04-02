@@ -16,7 +16,6 @@ class SignUpView(APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             password = serializer.validated_data['password']
-            # Process password here, for example, save it to the database
             return Response({'message': 'Sign Up Successful'}, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
