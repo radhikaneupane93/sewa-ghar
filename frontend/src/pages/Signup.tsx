@@ -32,6 +32,7 @@ const SignUp = () => {
     const formData = {
       email,
       password1,
+      password2,
     };
 
     axios.post('http://127.0.0.1:8000/auth/registration/', formData)

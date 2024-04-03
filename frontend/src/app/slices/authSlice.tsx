@@ -1,82 +1,53 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import CookieHelper from "@/helpers/CookieHelper";
-import { AuthState } from "@/types";
 import { RootState } from "../store";
 
+
+type AuthState = {
+    isAuthenticated: boolean;
+    token: string | null; 
+    email: string;
+   
+};
+
+
 const initialState: AuthState = {
-    // token: CookieHelper.getCookie("sewaghar") || null,
-    isAuthenticated: Boolean(CookieHelper.getCookie("email")) || false,
-    // role: CookieHelper.getCookie("role") || "",
-    // userId: CookieHelper.getCookie("userId"),
+    isAuthenticated: Boolean(CookieHelper.getCookie("sewaghar")),
+    token: CookieHelper.getCookie("sewaghar") || null,
     email: CookieHelper.getCookie("email") || "",
+    
 };
 
 const authSlice = createSlice({
     name: "auth",
-    initialState: { ...initialState },
+    initialState,
     reducers: {
-        //for setting the crediantials first time
-        setInitialCredentials: (
-            state: AuthState,
-            action: PayloadAction<AuthState>
-        ) => {
-            if (action.payload.email) {
-                console.log(action);
-                // CookieHelper.setCookie("sewaghar", action.payload.token, 7);
-               // CookieHelper.setCookie("role", action.payload.role, 7);
-                // CookieHelper.setCookie("userId", action.payload.userId, 7);
-                CookieHelper.setCookie("email", action.payload.email, 7);
-                // state.token = action.payload.token;
-                state.isAuthenticated = true;
-                // state.role = action.payload.role;
-                // state.userId = action.payload.userId;
-                state.email = action.payload.email;
-            }
+        setToken: (state: AuthState, action: PayloadAction<string>) => {
+            const token = action.payload;
+            CookieHelper.setCookie("sewaghar", token, 7);
+            state.token = token;
+            state.isAuthenticated = true;
         },
-
-        //for setting new access token
-        setNewToken: (
-            state: AuthState,
-            action: PayloadAction<{
-                // token: string;
-                // role: string;
-                // userId: string;
-                email: string;
-            }>
-        ) => {
-            if (action.payload.email) {
-                // CookieHelper.setCookie("sewaghar", action.payload.token, 7);
-                // CookieHelper.setCookie("role", action.payload.role, 7);
-                // CookieHelper.setCookie("userId", action.payload.userId, 7);
-                CookieHelper.setCookie("email", action.payload.email, 7);
-                // state.token = action.payload.token;
-                state.isAuthenticated = true;
-                // state.role = action.payload.role;
-                // state.userId = action.payload.userId;
-                state.email = action.payload.email;
-            }
-        },
-
-        //for logout
         logout: (state: AuthState) => {
-            // CookieHelper.deleteCookie("sewaghar");
-            // CookieHelper.deleteCookie("role");
-            // CookieHelper.deleteCookie("userId");
-            CookieHelper.deleteCookie("email");
-            // state.token = null;
+            CookieHelper.deleteCookie("sewaghar");
+            state.token = null;
             state.isAuthenticated = false;
-            // state.role = "";
-            // state.userId = "";
             state.email = "";
+        },
+        setInitialCredentials: (state: AuthState, action: PayloadAction<AuthState>) => {
+            state.token = action.payload.token;
+            state.isAuthenticated = true;
+            state.email = action.payload.email;
+           
         },
     },
 });
 
-export const { setInitialCredentials, setNewToken, logout } = authSlice.actions;
+
+export const { setToken, logout, setInitialCredentials } = authSlice.actions;
 export default authSlice.reducer;
 
-// export const selectUserRole = (state: RootState) => state.auth.role;
+
 export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenticated;
-// export const selectToken = (state: RootState) => state.auth.token;
-// export const selectUserId = (state: RootState) => state.auth.userId;
+export const selectToken = (state: RootState) => state.auth.token;
 export const selectEmail = (state: RootState) => state.auth.email;
