@@ -17,7 +17,8 @@ class CustomUser(AbstractUser):
     address = models.CharField(max_length=20)
     phonenumber = models.CharField(max_length=20, null=True, blank=True)
     role = models.CharField(max_length=20, choices=Role.choices, default=Role.DONOR)
-
+    reward_points = models.IntegerField(default=1)
+    
     USERNAME_FIELD="email"
     REQUIRED_FIELDS=[]
 

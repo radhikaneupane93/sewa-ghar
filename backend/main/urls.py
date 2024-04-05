@@ -10,4 +10,5 @@ urlpatterns = [
     path('auth/google/', GoogleLogin.as_view(), name='google_login'),
     path('donation/', include('donation.urls')),
     path('banks/', include('banks.urls')), 
+    path('leaderboard/', include('leaderboard.urls')),
 ]

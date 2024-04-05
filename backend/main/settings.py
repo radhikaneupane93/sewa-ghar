@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     'donation',
     'banks',
+    'leaderboard',
 ]
 
 REST_FRAMEWORK = {
