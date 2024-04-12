@@ -4,6 +4,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Leaderboard from "./Leaderboard";
+import Blog from "./Blog";
 
 const DonationLocations = () => {
   const mapUrls = [
@@ -77,8 +78,7 @@ const LandingPage = () => {
       </div>
       <DonationLocations />
       <Leaderboard />
-
-      
+      <Blog /> 
     </>
   );
 };

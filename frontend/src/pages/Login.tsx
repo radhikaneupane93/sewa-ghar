@@ -24,8 +24,9 @@ const Login = () => {
         toast.success("Logged in Successful");
         dispatch(
           setInitialCredentials({
-            email: res.data.email,
+            token: res.data.token,
             isAuthenticated: true,
+            email:''
           })
         );
         navigate("/");
@@ -41,19 +42,7 @@ const Login = () => {
       "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:5173/auth/google/callback&prompt=consent&response_type=token&client_id=412234909744-1u7pt7qvsr0o6te1cvipjuvor4iiov82.apps.googleusercontent.com&scope=openid%20email%20profile";
   };
 
-  const handleGoogleLoginRedirect = () => {
-    if (window.location.search.includes("success=true")) {
-      dispatch(
-        setInitialCredentials({
-          email: "user@example.com",
-          isAuthenticated: true,
-        })
-      );
-      navigate("/");
-    } else {
-      toast.error("Google login failed");
-    }
-  };
+ 
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
