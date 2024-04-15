@@ -1,5 +1,4 @@
 import { useState } from "react";
-import GoogleIcon from "@mui/icons-material/Google";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -18,15 +17,15 @@ const Login = () => {
   };
   const onSubmit = () => {
     axios
-      .post("http://127.0.0.1:8000/auth/login/", formdata)
+      .post("http://127.0.0.1:8000/users/api/login/", formdata)
       .then((res) => {
         console.log(res);
         toast.success("Logged in Successful");
         dispatch(
           setInitialCredentials({
-            token: res.data.token,
+            email: res.data.email,
             isAuthenticated: true,
-            email:''
+            token: res.data.access
           })
         );
         navigate("/");
@@ -37,12 +36,6 @@ const Login = () => {
       });
   };
 
-  const handleGoogleLogin = () => {
-    window.location.href =
-      "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:5173/auth/google/callback&prompt=consent&response_type=token&client_id=412234909744-1u7pt7qvsr0o6te1cvipjuvor4iiov82.apps.googleusercontent.com&scope=openid%20email%20profile";
-  };
-
- 
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
@@ -83,13 +76,6 @@ const Login = () => {
           className="block w-full bg-orange-500 text-white py-2 rounded-md mb-4"
         >
           Login
-        </button>
-        <button
-          onClick={handleGoogleLogin}
-          className="ml-2 flex items-center bg-gray-100 py-2 px-4 rounded-md mb-4"
-        >
-          <GoogleIcon />
-          <span className="ml-2">Login with Google</span>
         </button>
 
         <p className="text-sm text-gray-600 p-5">

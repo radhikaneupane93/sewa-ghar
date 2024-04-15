@@ -1,8 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import image from "../assets/Images/AboutUSVolunteering.jpg";
-import image2 from "../assets/Images/image1.jpg";
-import image3 from "../assets/Images/image2.jpg";
 import vision from "../assets/Images/OurVision.jpg";
 import mission from "../assets/Images/OurMissions.jpg";
 import values from "../assets/Images/ourValues.jpg";
@@ -85,69 +82,6 @@ const About: React.FC = () => {
             </ul>
           </div>
         </div>
-
-     
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mt-32">
-          <div className="image-description flex gap-12 transition-transform duration-300 hover:scale-105">
-            <img
-              src={image}
-              alt="About Us"
-              className="w-1/2 h-50 object-cover rounded-lg shadow-lg"
-            />
-            <p className="mt-5">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque
-              nobis molestias deserunt modi voluptas sit totam voluptates,
-              mollitia iste iure quod quia sequi minima officia magnam sint
-              quisquam dolores nisi. Lorem ipsum dolor sit amet consectetur,
-              adipisicing elit. Neque nobis molestias deserunt modi voluptas sit
-              totam voluptates, mollitia iste iure quod quia sequi minima
-              officia magnam sint quisquam dolores nisi. Lorem ipsum dolor sit
-              amet consectetur, adipisicing elit. Neque nobis molestias deserunt
-              modi voluptas sit totam voluptates, mollitia iste iure quod quia
-              sequi minima officia magnam sint quisquam dolores nisi.
-            </p>
-          </div>
-          <div className="image-description flex gap-12 transition-transform duration-300 hover:scale-105">
-            <img
-              src={image2}
-              alt="About Us"
-              className="w-1/2 h-50 object-cover rounded-lg shadow-lg"
-            />
-            <p className="mt-5">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque
-              nobis molestias deserunt modi voluptas sit totam voluptates,
-              mollitia iste iure quod quia sequi minima officia magnam sint
-              quisquam dolores nisi. Lorem ipsum dolor sit amet consectetur,
-              adipisicing elit. Neque nobis molestias deserunt modi voluptas sit
-              totam voluptates, mollitia iste iure quod quia sequi minima
-              officia magnam sint quisquam dolores nisi. Lorem ipsum dolor sit
-              amet consectetur, adipisicing elit. Neque nobis molestias deserunt
-              modi voluptas sit totam voluptates, mollitia iste iure quod quia
-              sequi minima officia magnam sint quisquam dolores nisi.
-            </p>
-          </div>
-          <div className="image-description flex gap-12 transition-transform duration-300 hover:scale-105">
-            <img
-              src={image3}
-              alt="About Us"
-              className="w-1/2 h-50 object-cover rounded-lg shadow-lg"
-            />
-            <p className="mt-5">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque
-              nobis molestias deserunt modi voluptas sit totam voluptates,
-              mollitia iste iure quod quia sequi minima officia magnam sint
-              quisquam dolores nisi. Lorem ipsum dolor sit amet consectetur,
-              adipisicing elit. Neque nobis molestias deserunt modi voluptas sit
-              totam voluptates, mollitia iste iure quod quia sequi minima
-              officia magnam sint quisquam dolores nisi. Lorem ipsum dolor sit
-              amet consectetur, adipisicing elit. Neque nobis molestias deserunt
-              modi voluptas sit totam voluptates, mollitia iste iure quod quia
-              sequi minima officia magnam sint quisquam dolores nisi.
-            </p>
-          </div>
-        </div>
-
- 
         <div className="mt-12">
           <h2 className="text-2xl font-bold mb-4">Achievements</h2>
           <div className="achievementImages flex gap-4">

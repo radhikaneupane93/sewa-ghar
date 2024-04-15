@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -93,12 +92,6 @@ const Blog = () => {
       </div>
 
       <div className="text-center mt-8">
-        <Link
-          to="/blogs"
-          className="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-orange-600 transition-colors duration-300"
-        >
-          Explore more
-        </Link>
       </div>
     </div>
   );
