@@ -1,28 +1,38 @@
+import datetime
 from django.db import models
-from banks.models import BankLocation
-from enum import Enum
+from users.models import CustomUser
+from django.core.validators import MinValueValidator, MaxValueValidator
 
-class ClothType(Enum):
-    SHIRT = 'Shirt'
-    TROUSERS = 'Trousers'
-    DRESS = 'Dress'
-    COAT = 'Coat'
-    SWEATER = 'Sweater'
-    SKIRT = 'Skirt'
-    OTHER = 'Other'
+class ClothBank(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField(max_length=255)
+    latitude = models.FloatField(validators=[MinValueValidator(-90), MaxValueValidator(90)])
+    longitude = models.FloatField(validators=[MinValueValidator(-180), MaxValueValidator(180)])
+    address = models.CharField(max_length=255)
+    city = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.title
 
 class Donation(models.Model):
-    GENDER_CHOICES = [
-        ('male', 'Male'),
-        ('female', 'Female'),
-        ('other', 'Other'),
+    CLOTH_CHOICES = [
+        ('SHIRT', 'Shirt'),
+        ('TROUSERS', 'Trousers'),
+        ('DRESS', 'Dress'),
+        ('COAT', 'Coat'),
+        ('SWEATER', 'Sweater'),
+        ('SKIRT', 'Skirt'),
+        ('OTHER', 'Other'),
     ]
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    clothtype = models.CharField(max_length=20, choices=[(tag.name, tag.value) for tag in ClothType])
-    description = models.TextField()
-    bankLocation = models.ForeignKey(BankLocation, on_delete=models.CASCADE)
+    STATUS_TYPES = ['Pending', 'Accepted', 'Rejected']
+
+    donated_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='donated_by')
+    cloth_type = models.CharField(max_length=20, choices=CLOTH_CHOICES, default='Shirt')
+    cloth_bank = models.ForeignKey(ClothBank, on_delete=models.CASCADE, related_name='cloth_bank')
+    no_of_clothes = models.IntegerField(default=0)
+    donation_date = models.DateField(auto_now_add=True)
+    status = models.CharField(max_length=25, default="Pending")
 
     def __str__(self):
-        return self.name
+        return f"Donation by {self.donated_by} of type {self.cloth_type} to {self.cloth_bank}"
