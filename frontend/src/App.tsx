@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <ToastContainer autoClose={1000}/>
+      <ToastContainer autoClose={2000}/>
 
       <Toaster />
     </>

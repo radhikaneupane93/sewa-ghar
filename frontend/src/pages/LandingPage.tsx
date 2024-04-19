@@ -54,7 +54,7 @@ const LandingPage = () => {
     <>
       <div className="flex mt-[15vh] ml-5 ">
         <div className=" mt-32 ">
-          <h1 className="text-4xl md:text-3xl xl:text-4xl font-semibold text-red-600">
+          <h1 className="text-4xl font-semibold text-red-600">
             Are you ready to Donate?
           </h1>
           <p className="mt-6 text-xl md:text-xlxl leading-6 text-gray-700 max-w-2xl">
@@ -77,6 +77,14 @@ const LandingPage = () => {
         </div>
       </div>
       <DonationLocations />
+      <div className="flex justify-center">
+      <Button
+            className="bg-orange-500 hover:bg-orange-300 mt-6 " 
+            onClick={() => navigate("/ClothLocationsPage")}
+          >
+            View More
+          </Button>
+      </div>
       <Leaderboard />
       <Blog /> 
     </>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BannerBackground from "@/assets/Images/home-banner-background.png";
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
@@ -26,7 +26,7 @@ const SignUp = () => {
       role
     };
 
-    axios.post('http://127.0.0.1:8000/users/api/Customuser/', formData)
+    axios.post('http://127.0.0.1:8000/users/api/customuser/', formData)
       .then(res => {
         console.log(res);
         toast.success('Sign Up Successful');

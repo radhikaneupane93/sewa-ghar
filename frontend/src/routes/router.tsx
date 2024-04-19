@@ -16,6 +16,9 @@ import {
   Profile,
   Blog,
   BlogDetail,
+  Confirmation,
+  ClothLocationsPage,
+  DonationDetails,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -70,6 +73,18 @@ const router = createBrowserRouter([
       {
         path: "/blogs/:id",
         element: <BlogDetail />,
+      },
+      {
+        path: "/Confirmation",
+        element: <Confirmation />,
+      },
+      {
+        path: "/ClothLocationsPage",
+        element: <ClothLocationsPage />,
+      },
+      {
+        path: "/DonationDetails",
+        element: <DonationDetails />,
       },
     ],
   },

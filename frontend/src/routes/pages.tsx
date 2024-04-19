@@ -12,6 +12,9 @@ import Reward from "@/pages/Reward";
 import Profile from "@/pages/Profile";
 import Blog from "@/pages/Blog";
 import BlogDetail from "@/pages/BlogDetail";
+import Confirmation from "@/pages/Confirmation"
+import ClothLocationsPage from "@/pages/ClothLocationsPage"
+import DonationDetails from "@/pages/DonationDetails";
 
 
-export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard,Reward,Profile,Blog,BlogDetail}
+export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard,Reward,Profile,Blog,BlogDetail,Confirmation,ClothLocationsPage,DonationDetails}
