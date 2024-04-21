@@ -43,15 +43,18 @@ const BlogDetail = () => {
 
   return (
     <div className="container flex flex-col items-center justify-center mt-32">
-      
       <p className="text-4xl md:text-3xl xl:text-4xl font-semibold text-red-600 mb-6 text-center">
-            {blogDetail.title}
-          </p>
-          {blogDetail.imageUri && (
-            <img src={blogDetail.imageUri} alt={blogDetail.title} className="mb-4" />
-          )}
-          <p className="mb-4 font-semibold text-center">{blogDetail.summary}</p>
-          <p className="mb-4 text-justify">{blogDetail.content}</p>
+        {blogDetail.title}
+      </p>
+      {blogDetail.imageUri && (
+        <img
+          src={blogDetail.imageUri}
+          alt={blogDetail.title}
+          className="mb-4"
+        />
+      )}
+      <p className="mb-4 font-semibold text-center">{blogDetail.summary}</p>
+      <p className="mb-4 text-justify">{blogDetail.content}</p>
     </div>
   );
 };

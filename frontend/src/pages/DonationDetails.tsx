@@ -6,7 +6,7 @@ const DonationDetails = () => {
     cloth_bank: "Upcycle Nepal - Revive",
     no_of_clothes: 5,
     donation_date: "2024-04-19",
-    status: "Pending" // You need to fetch this status from the backend
+    status: "Pending", // You need to fetch this status from the backend
   };
 
   return (

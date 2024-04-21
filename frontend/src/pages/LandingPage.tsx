@@ -6,9 +6,8 @@ import { Button } from "@/components/ui/button";
 import Leaderboard from "./Leaderboard";
 import Blog from "./Blog";
 
-
 const DonationLocations = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const mapUrls = [
     "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d366425.29761937587!2d85.25933814201278!3d27.673854871921694!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19ce756d08f1%3A0x4996fdfa01f0dc37!2sUpcycle%20Nepal%20-%20Revive!5e0!3m2!1sen!2snp!4v1710852519522!5m2!1sen!2snp",
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113020.7470046899!2d85.2178982972656!3d27.72042480000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb191746c19d6f%3A0x5f8ae3ff5db3a7f7!2sPublic%20Cloth%20bank!5e0!3m2!1sen!2snp!4v1709371804339!5m2!1sen!2snp",
@@ -16,9 +15,7 @@ const DonationLocations = () => {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d902433.9839738016!2d83.98068150851094!3d27.92857533863575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19211f982a63%3A0x80bbd49bc965dd27!2sSukhawati%20charity%20Store!5e0!3m2!1sen!2snp!4v1710852858122!5m2!1sen!2snp",
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d902433.9839738016!2d83.98068150851094!3d27.92857533863575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19080d17c723%3A0xfd074968858e6a4b!2sSukhawati%20store!5e0!3m2!1sen!2snp!4v1710852964763!5m2!1sen!2snp",
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56508.08115814216!2d85.22309574863279!3d27.724847599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19b0eeb63c9f%3A0xee53ef0d95b05b4f!2sAction%20Works%20Nepal!5e0!3m2!1sen!2snp!4v1710853036613!5m2!1sen!2snp",
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41702.12404194699!2d85.34649934021049!3d27.725074345726032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19d6fbb3ccfb%3A0x48ee1b9881a267dc!2sAroan%20Nepal!5e0!3m2!1sen!2snp!4v1710853312790!5m2!1sen!2snp"
-
-
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41702.12404194699!2d85.34649934021049!3d27.725074345726032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19d6fbb3ccfb%3A0x48ee1b9881a267dc!2sAroan%20Nepal!5e0!3m2!1sen!2snp!4v1710853312790!5m2!1sen!2snp",
   ];
   return (
     <>
@@ -47,12 +44,12 @@ const DonationLocations = () => {
       </div>
 
       <div className="flex justify-center">
-      <Button
-            className="bg-orange-500 hover:bg-orange-300 mt-6 " 
-            onClick={() => navigate("/ClothLocations")}
-          >
-            View More
-          </Button>
+        <Button
+          className="bg-orange-500 hover:bg-orange-300 mt-6 "
+          onClick={() => navigate("/ClothLocations")}
+        >
+          View More
+        </Button>
       </div>
     </>
   );
@@ -88,8 +85,8 @@ const LandingPage = () => {
         </div>
       </div>
       <DonationLocations />
-      <Leaderboard/>
-      <Blog /> 
+      <Leaderboard />
+      <Blog />
     </>
   );
 };

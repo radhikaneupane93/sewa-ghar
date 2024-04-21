@@ -18,25 +18,25 @@ const Login = () => {
     setFormdata({ ...formdata, [e.target.name]: e.target.value });
   };
 
-  const fetchData = async () => {
+  const fetchData = async (token: string) => {
     try {
-      const token = CookieHelper.getCookie('token');
-      console.log(token)
-      const response = await axios.get('http://127.0.0.1:8000/users/api/user', {
+      console.log(token);
+      const response = await axios.get("http://127.0.0.1:8000/users/api/user", {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
 
-      console.log("Token from cookie:", response)
-      
-      dispatch(setInitialCredentials({
-        email: response.data.email,
-        role: response.data.role,
-        token: token,
-        isAuthenticated: true
-      }));
+      console.log("Token from cookie:", response);
 
+      dispatch(
+        setInitialCredentials({
+          email: response.data.email,
+          role: response.data.role,
+          token: token,
+          isAuthenticated: true,
+        })
+      );
     } catch (error) {
       toast.error("Failed to fetch user data");
     }
@@ -44,15 +44,17 @@ const Login = () => {
 
   const onSubmit = async () => {
     try {
-      const response = await axios.post("http://127.0.0.1:8000/users/api/login/", formdata);
+      const response = await axios.post(
+        "http://127.0.0.1:8000/users/api/login/",
+        formdata
+      );
       const token = response.data.access;
-      console.log("Login response token:", token)
+      console.log("Login response token:", token);
 
-      CookieHelper.setCookie('token', token, 3);
-      await fetchData();
+      CookieHelper.setCookie("token", token, 3);
+      await fetchData(token);
       navigate("/");
       toast.success("Logged in Successfully");
-
     } catch (error) {
       console.error("Login failed:", error);
       toast.error("Something went wrong with login");

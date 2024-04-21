@@ -70,11 +70,11 @@ const Volunteering: React.FC = () => {
         </div>
       </div>
       <div className="text-center mt-14">
-                    <p className="mb-4">Would you like to volunteer?</p>
-                    <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-                        Yes, I want to volunteer
-                    </button>
-                </div>
+        <p className="mb-4">Would you like to volunteer?</p>
+        <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+          Yes, I want to volunteer
+        </button>
+      </div>
     </>
   );
 };

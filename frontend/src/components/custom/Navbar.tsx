@@ -77,9 +77,7 @@ const Navbar = () => {
               >
                 My Profile
               </MenuItem>
-              <MenuItem
-                onClick={() => navigate("/Leaderboard")}
-              >
+              <MenuItem onClick={() => navigate("/Leaderboard")}>
                 Rewards
               </MenuItem>
               <MenuItem
