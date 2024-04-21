@@ -85,7 +85,7 @@ def get_specific_user(request, user_id):
     
     
 class LeaderboardView(APIView):
-    def get (self,request):
-        users=CustomUser.objects.order_by('-points')[:10]
-        serializer = LeaderBoardSerialzer(users, any=True)
+    def get(self, request):
+        users = CustomUser.objects.order_by('-points')[:10]
+        serializer = LeaderBoardSerializer(users, many=True)  
         return Response(serializer.data, status=status.HTTP_200_OK)

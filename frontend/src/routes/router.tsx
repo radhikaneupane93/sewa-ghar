@@ -51,6 +51,10 @@ const router = createBrowserRouter([
         element: <Donation />,
       },
       {
+        path: "/donate/:clothBankId/:clothBankTitle",
+        element: <Donation />,
+      },
+      {
         path: "/Leaderboard",
         element: <Leaderboard />,
       },
@@ -79,7 +83,7 @@ const router = createBrowserRouter([
         element: <Confirmation />,
       },
       {
-        path: "/ClothLocationsPage",
+        path: "/ClothLocations",
         element: <ClothLocationsPage />,
       },
       {

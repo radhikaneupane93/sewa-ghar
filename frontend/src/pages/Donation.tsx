@@ -33,7 +33,7 @@ const Donation = () => {
 
   const onSubmitHandler = (data: FieldValues) => {
     const token = CookieHelper.getCookie('token')
-    axios.post('http://127.0.0.1:8080/donation/donations/', data,
+    axios.post('http://127.0.0.1:8000/donation/donations/', data,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -50,7 +50,7 @@ const Donation = () => {
   }
 
   const getClothType = async () => {
-    await axios.get('http://127.0.0.1:8080/donation/clothtypes/'
+    await axios.get('http://127.0.0.1:8000/donation/clothtypes/'
     ).then(res => {
       setClothType(res.data)
     })
@@ -60,7 +60,7 @@ const Donation = () => {
   }
 
   const getClothBank = async () => {
-    await axios.get('http://127.0.0.1:8080/donation/getclothbanks/'
+    await axios.get('http://127.0.0.1:8000/donation/getclothbanks/'
     ).then(res => {
       setClothBank(res.data)
     })

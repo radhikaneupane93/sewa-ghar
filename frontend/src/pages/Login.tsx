@@ -6,36 +6,58 @@ import BannerBackground from "@/assets/Images/home-banner-background.png";
 import { useDispatch } from "react-redux";
 import { setInitialCredentials } from "@/app/slices/authSlice";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import CookieHelper from "@/helpers/CookieHelper";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [formdata, setFormdata] = useState({ email: "", password: "" });
+
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormdata({ ...formdata, [e.target.name]: e.target.value });
   };
-  const onSubmit = () => {
-    axios
-      .post("http://127.0.0.1:8000/users/api/login/", formdata)
-      .then((res) => {
-        console.log(res);
-        toast.success("Logged in Successful");
-        dispatch(
-          setInitialCredentials({
-            email: res.data.email,
-            isAuthenticated: true,
-            token: res.data.access
-          })
-        );
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Something went Wrong");
+
+  const fetchData = async () => {
+    try {
+      const token = CookieHelper.getCookie('token');
+      console.log(token)
+      const response = await axios.get('http://127.0.0.1:8000/users/api/user', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       });
+
+      console.log("Token from cookie:", response)
+      
+      dispatch(setInitialCredentials({
+        email: response.data.email,
+        role: response.data.role,
+        token: token,
+        isAuthenticated: true
+      }));
+
+    } catch (error) {
+      toast.error("Failed to fetch user data");
+    }
   };
 
+  const onSubmit = async () => {
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/users/api/login/", formdata);
+      const token = response.data.access;
+      console.log("Login response token:", token)
+
+      CookieHelper.setCookie('token', token, 3);
+      await fetchData();
+      navigate("/");
+      toast.success("Logged in Successfully");
+
+    } catch (error) {
+      console.error("Login failed:", error);
+      toast.error("Something went wrong with login");
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">

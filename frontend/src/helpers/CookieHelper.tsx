@@ -1,4 +1,4 @@
-                                                                                                                                                                    const CookieHelper = (() => {
+const CookieHelper = (() => {
     const cookie = document.cookie;
 
     const setCookie = (name: string, value: string, days: number) => {

@@ -6,7 +6,9 @@ import { Button } from "@/components/ui/button";
 import Leaderboard from "./Leaderboard";
 import Blog from "./Blog";
 
+
 const DonationLocations = () => {
+  const navigate = useNavigate()
   const mapUrls = [
     "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d366425.29761937587!2d85.25933814201278!3d27.673854871921694!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19ce756d08f1%3A0x4996fdfa01f0dc37!2sUpcycle%20Nepal%20-%20Revive!5e0!3m2!1sen!2snp!4v1710852519522!5m2!1sen!2snp",
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113020.7470046899!2d85.2178982972656!3d27.72042480000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb191746c19d6f%3A0x5f8ae3ff5db3a7f7!2sPublic%20Cloth%20bank!5e0!3m2!1sen!2snp!4v1709371804339!5m2!1sen!2snp",
@@ -43,6 +45,15 @@ const DonationLocations = () => {
           />
         ))}
       </div>
+
+      <div className="flex justify-center">
+      <Button
+            className="bg-orange-500 hover:bg-orange-300 mt-6 " 
+            onClick={() => navigate("/ClothLocations")}
+          >
+            View More
+          </Button>
+      </div>
     </>
   );
 };
@@ -54,7 +65,7 @@ const LandingPage = () => {
     <>
       <div className="flex mt-[15vh] ml-5 ">
         <div className=" mt-32 ">
-          <h1 className="text-4xl font-semibold text-red-600">
+          <h1 className="text-4xl md:text-3xl xl:text-4xl font-semibold text-red-600">
             Are you ready to Donate?
           </h1>
           <p className="mt-6 text-xl md:text-xlxl leading-6 text-gray-700 max-w-2xl">
@@ -77,15 +88,7 @@ const LandingPage = () => {
         </div>
       </div>
       <DonationLocations />
-      <div className="flex justify-center">
-      <Button
-            className="bg-orange-500 hover:bg-orange-300 mt-6 " 
-            onClick={() => navigate("/ClothLocationsPage")}
-          >
-            View More
-          </Button>
-      </div>
-      <Leaderboard />
+      <Leaderboard/>
       <Blog /> 
     </>
   );

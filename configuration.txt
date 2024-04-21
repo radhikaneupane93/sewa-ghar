@@ -1,0 +1,87 @@
+user 1 
+demo@gmail.com
+Hellodemopassword123452
+
+
+user 2
+random876@gmail.com
+RandomBg-44hdd*V+5Lth88892
+
+
+Donation Banks 
+
+1.  "title": "Upcycle Nepal - Revive",
+    "description": "One of the recycling center",
+    "latitude": 27.708206919250994,
+    "longitude":  85.3104695027768,
+    "address": "Chittadhar Marg Bangemuddha, Kathmandu 44600",
+    "city": "Kathmandu",
+    "country": "Nepal",
+    "phone_number": "9802081441"
+
+
+2.  "title": "Public Cloth bank",
+    "description": "One of Clothing Suppliers",
+    "latitude": 27.679534762106236,
+    "longitude": 85.332441887005,
+    "address": "M8HJ+QR4, Unnamed Road, Kathmandu 44600",
+    "city": "Kathmandu",
+    "country": "Nepal",
+    "phone_number": "9802081442"
+
+3. Title: Clothes Bank Sherpa (Thrift Clothes Shop)
+   Description:One of the thrifted shops
+   Latitude:27.720605168389607
+   Longitude:85.37041946725094
+   Address:P9CC+548, Gokarneshwor 44600
+   City: Kathmandu
+   Country: Nepal
+   Phone number: 9848445490
+
+
+
+4. Title:Sukhawati Charity Store
+   Description:Thrift store
+   Latitude:27.72923320746404
+   Longitude: 85.30035372655041
+   Address:P7CR+GWJ, Kathmandu 44600
+   City: Kathmandu
+   Country: Nepal
+   Phone number: 9801367281
+
+
+5. Title: Sukhawati Store
+   Description: General Store
+   Latitude: 27.753999510643496
+   Longitude: 85.30483093441455
+   Address:P8R3+9FX, Tarakeshwar 44600
+   City: Kathmandu
+   Country: Nepal
+   Phone number: 123456789
+
+
+6. Title: Action Works Nepal
+   Description: Non-governmental organization
+   Latitude: 27.69010886876132
+   Longitude: 85.30483093441455
+   Address:44600, Kathmandu
+   City: Kathmandu
+   Country: Nepal
+   Phone number: 123456789
+
+7. Title: Aroan Nepal
+   Description: Clothing store
+   Latitude: 27.734725910966507
+   Longitude: 85.30483093441455
+   Address:KC Complex, Second Floor, Kathmandu 44600
+   City: Kathmandu
+   Country: Nepal
+   Phone number: 9802336305
+
+   
+   
+
+
+
+
+
