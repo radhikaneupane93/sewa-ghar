@@ -34,7 +34,7 @@ const Leaderboard = () => {
   return (
     <div className="max-w-4xl mx-auto mt-32">
       <h2 className="text-3xl font-semibold text-red-600 mb-6 text-center">
-        Our Leading Donors
+        Our Top 5 Leading Donors
       </h2>
       <div className="bg-white shadow-lg rounded-lg overflow-hidden mt-6">
         <div className="flex bg-orange-500 py-3 px-5 font-bold text-white">

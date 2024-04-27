@@ -12,7 +12,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useForm, FieldValues } from "react-hook-form";
-import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -93,6 +92,15 @@ const Donation = () => {
   return (
     <>
       <div className="max-w-lg mx-auto p-4 border rounded shadow-lg mt-36">
+      {!isAuthenticated && (
+          <div className="text-center text-red-500">
+            <p>To proceed, kindly log in first.</p>
+            <Button onClick={handleLogin} className="mt-4 bg-orange-500 hover:bg-orange-300">
+              Log In
+            </Button>
+          </div>
+        )}
+
         {isAuthenticated && (
           <Form {...form}>
             <form
