@@ -12,11 +12,28 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [address, setAddress] = useState('');
   const [phonenumber, setPhoneNumber] = useState('');
-  const role = 'DONOR'; // Default role is "DONOR"
+  const role = 'DONOR'; 
   const navigate = useNavigate(); 
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
   const handleSignUp = () => {
-    // Implement sign up logic here
+    if (!emailRegex.test(email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    if (!passwordRegex.test(password)) {
+      toast.error('Password must contain at least 8 characters, including uppercase, lowercase, and numbers');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+
     const formData = {
       email,
       name,
