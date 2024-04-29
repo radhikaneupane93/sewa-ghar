@@ -6,7 +6,7 @@ import BannerBackground from "@/assets/Images/home-banner-background.png";
 import { useDispatch } from "react-redux";
 import { setInitialCredentials } from "@/app/slices/authSlice";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import CookieHelper from "@/helpers/CookieHelper";
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,43 +18,45 @@ const Login = () => {
     setFormdata({ ...formdata, [e.target.name]: e.target.value });
   };
 
-  const fetchData = async (token: string) => {
+  const fetchData = (token: string) => {
     try {
-      console.log(token);
-      const response = await axios.get("http://127.0.0.1:8000/users/api/user", {
+      axios.get('http://127.0.0.1:8000/users/api/user', {
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      console.log("Token from cookie:", response);
-
-      dispatch(
-        setInitialCredentials({
+          Authorization: `Bearer ${token}`
+        }
+      }).then(response => {
+        dispatch(setInitialCredentials({
+          id: response.data.id,
+          name: response.data.name,
           email: response.data.email,
           role: response.data.role,
+          phonenumber: response.data.phonenumber,
+          address: response.data.address,
           token: token,
-          isAuthenticated: true,
-        })
-      );
+          isAuthenticated: true
+        }))
+        toast.success("Login successful!")
+        navigate("/")
+      }).catch(err=>{
+        toast.error("Something went wrong")
+      })
+
     } catch (error) {
       toast.error("Failed to fetch user data");
     }
   };
 
-  const onSubmit = async () => {
+  const onSubmit = () => {
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/users/api/login/",
-        formdata
-      );
-      const token = response.data.access;
-      console.log("Login response token:", token);
+      axios.post('http://127.0.0.1:8000/users/api/login/', formdata)
+        .then((res: any) => {
+          console.log(res.data)
+          fetchData(res.data.access)
+        })
+        .catch(_err => {
+          toast.error(_err.response.data.message)
+        })
 
-      CookieHelper.setCookie("token", token, 3);
-      await fetchData(token);
-      navigate("/");
-      toast.success("Logged in Successfully");
     } catch (error) {
       console.error("Login failed:", error);
       toast.error("Something went wrong with login");

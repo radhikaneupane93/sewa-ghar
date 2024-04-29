@@ -1,8 +1,10 @@
 import Logo from "@/assets/Images/Logo.png";
-import "./Footer.css";
-import { BsTwitter, BsYoutube } from "react-icons/bs";
+import "./Footer.css"
+import { BsTwitter,BsYoutube  } from "react-icons/bs";
 import { SiLinkedin } from "react-icons/si";
 import { FaFacebookF } from "react-icons/fa";
+
+
 
 const Footer = () => {
   return (

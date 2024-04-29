@@ -1,40 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { Person as ProfileIcon } from "@mui/icons-material";
-import CookieHelper from "@/helpers/CookieHelper";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { selectRole, selectToken } from "@/app/slices/authSlice";
 
-interface Profile {
-  name: string;
-  address: string | null;
-  email: string;
-  phonenumber: string | null;
-  points: string | null;
+interface ProfileType {
+  name: string,
+  address: string | null,
+  email: string,
+  phonenumber: string | null,
+  points: string | null
 }
 
 const Profile = () => {
-  const [profileData, setProfileData] = useState<Profile | null>(null);
+  const [profileData, setProfileData] = useState<ProfileType | null>(null)
+  const token = useSelector(selectToken)
+  const role = useSelector(selectRole)
 
   const fetchProfileData = async () => {
-    const token = CookieHelper.getCookie("token");
-    await axios
-      .get("http://127.0.0.1:8000/users/api/user/", {
+    await axios.get('http://127.0.0.1:8000/users/api/user/',
+      {
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
+      }
+    ).then(res => {
+      setProfileData(res.data)
+      console.log(res.data)
+    })
+      .catch(err => {
+        toast.error(err)
       })
-      .then((res) => {
-        setProfileData(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        toast.error(err);
-      });
-  };
+  }
 
   useEffect(() => {
-    fetchProfileData();
-  }, []);
+    if (token) {
+      fetchProfileData();
+    }
+  }, [token])
 
   return (
     <div className="max-w-4xl mx-auto mt-32">
@@ -57,22 +61,24 @@ const Profile = () => {
             </div>
             <div className="flex-column column-gap-10px mt-10">
               <div style={{ marginBottom: "10px" }}>
-                <span className="font-bold">Address:</span>{" "}
-                {profileData.address}
+                <span className="font-bold">Address:</span> {profileData.address}
               </div>
               <div style={{ marginBottom: "10px" }}>
-                <span className="font-bold">Phone:</span>{" "}
-                {profileData.phonenumber}
+                <span className="font-bold">Phone:</span> {profileData.phonenumber}
               </div>
-              <div style={{ marginBottom: "10px" }}>
-                <span className="font-bold">Points:</span> {profileData.points}
-              </div>
+              {
+                role === "DONOR" && (
+                  <div style={{ marginBottom: "10px" }}>
+                    <span className="font-bold">Points:</span> {profileData.points}
+                  </div>
+                )
+              }
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

@@ -1,5 +1,5 @@
 #views.py
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -7,7 +7,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework.decorators import api_view
 from .models import CustomUser
-from .serializers import CustomUserSerializer, LoginSerializer,LeaderBoardSerializer
+from .serializers import CustomUserSerializer, LoginSerializer, LeaderBoardSerializer
 from django.contrib.auth import authenticate
 
 class CustomUserViewSet(viewsets.ModelViewSet):
@@ -70,7 +70,6 @@ class UserView(APIView):
         except Exception as e:
             return Response({'error': f'Error decoding token: {str(e)}'}, status=status.HTTP_401)
 
-
 @api_view(['GET'])
 def get_specific_user(request, user_id):
     if request.method == 'GET':
@@ -83,9 +82,10 @@ def get_specific_user(request, user_id):
     else:
         return Response({'error': 'Method not allowed'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
-    
+
+
 class LeaderboardView(APIView):
     def get(self, request):
-        users = CustomUser.objects.order_by('-points')[:10]
-        serializer = LeaderBoardSerializer(users, many=True)  
+        users = CustomUser.objects.order_by('-points')[:5]
+        serializer = LeaderBoardSerializer(users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

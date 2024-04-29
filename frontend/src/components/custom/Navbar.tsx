@@ -3,7 +3,7 @@ import Logo from "@/assets/Images/Logo.png";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSelector, useDispatch } from "react-redux";
-import { selectIsAuthenticated, logout } from "@/app/slices/authSlice";
+import { selectIsAuthenticated, logout, selectRole } from "@/app/slices/authSlice";
 import { toast } from "react-toastify";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Menu from "@mui/material/Menu";
@@ -12,10 +12,11 @@ import MenuItem from "@mui/material/MenuItem";
 const Navbar = () => {
   const navigate = useNavigate();
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const role = useSelector(selectRole);
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -24,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex fixed top-0 z-50 bg-white shadow-md p-5 px-18 max-h-[%60] overflow-hidden w-full justify-between items-center">
+    <nav className="flex z-50 fixed top-0 bg-white shadow-md p-5 px-18 max-h-[%60] overflow-hidden w-full justify-between items-center">
       <div onClick={() => navigate("/")} className="h-full cursor-pointer">
         <img className="h-[60px]" src={Logo} alt="" />
       </div>
@@ -71,27 +72,44 @@ const Navbar = () => {
             >
               <MenuItem
                 onClick={() => {
-                  handleClose();
                   navigate("/Profile");
                 }}
               >
                 My Profile
               </MenuItem>
-              <MenuItem onClick={() => navigate("/Leaderboard")}>
-                Rewards
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  navigate("/Volunteering");
-                }}
-              >
-                Volunteering
-              </MenuItem>
+
+              {role === "DONOR" ? (
+                <div>
+                  <MenuItem
+                    onClick={() => navigate("/Leaderboard")}
+                  >
+                    Rewards
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                      navigate("/Volunteering");
+                    }}
+                  >
+                    Volunteering
+                  </MenuItem>
+                </div>
+              ):(
+                <div>
+                <MenuItem
+                  onClick={() => navigate("/all-donations")}
+                >
+                  Donation Requests
+                </MenuItem>
+              </div>
+              )}
+
+
               <MenuItem
                 onClick={() => {
                   handleClose();
                   dispatch(logout());
+                  navigate("/Login")
                   toast.success("Logged out Successfully!");
                 }}
               >

@@ -14,11 +14,10 @@ import {
   Reward,
   Volunteering,
   Profile,
+  ClothLocationsPage,
+  AllDonations,
   Blog,
   BlogDetail,
-  Confirmation,
-  ClothLocationsPage,
-  DonationDetails,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -79,16 +78,12 @@ const router = createBrowserRouter([
         element: <BlogDetail />,
       },
       {
-        path: "/Confirmation",
-        element: <Confirmation />,
-      },
-      {
         path: "/ClothLocations",
         element: <ClothLocationsPage />,
       },
       {
-        path: "/DonationDetails",
-        element: <DonationDetails />,
+        path: "/all-donations",
+        element: <AllDonations />,
       },
     ],
   },
@@ -100,7 +95,6 @@ const router = createBrowserRouter([
     path: "/Signup",
     element: <Signup />,
   },
-
   {},
 ]);
 
