@@ -14,6 +14,7 @@ import Blog from "@/pages/Blog";
 import BlogDetail from "@/pages/BlogDetail";
 import ClothLocationsPage from "@/pages/ClothLocationsPage";
 import AllDonations from "@/pages/AllDonations";
+import DataChart from "@/pages/DataChart";
 
 
-export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard,Reward,Profile,Blog,BlogDetail, ClothLocationsPage, AllDonations}
+export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard,Reward,Profile,Blog,BlogDetail, ClothLocationsPage, AllDonations,DataChart}

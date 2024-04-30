@@ -61,14 +61,14 @@ const Blog = () => {
   };
 
   return (
-    <div className="container flex flex-col items-center justify-center mt-32">
+    <div className="container flex flex-col items-center justify-center mt-16">
       <p className="text-4xl md:text-3xl xl:text-4xl font-semibold text-red-600 mb-6">
         Our Blogs
       </p>
       {loading && <p>Loading...</p>}
       {!loading && blogs.data.length === 0 && <p>No blogs found.</p>}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {blogs.data.map((blog) => (
           <Card>
             <CardActionArea href={`/blogs/${blog.slug}`}>

@@ -18,6 +18,7 @@ import {
   AllDonations,
   Blog,
   BlogDetail,
+  DataChart,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: "/all-donations",
         element: <AllDonations />,
+      },
+      {
+        path: "/DataChart",
+        element: < DataChart />,
       },
     ],
   },

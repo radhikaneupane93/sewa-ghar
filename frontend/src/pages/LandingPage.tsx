@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Leaderboard from "./Leaderboard";
 import Blog from "./Blog";
+import { DataChart } from "@/routes/pages";
 
 const DonationLocations = () => {
   const navigate = useNavigate();
@@ -85,8 +86,9 @@ const LandingPage = () => {
         </div>
       </div>
       <DonationLocations />
-      <Leaderboard />
+      <DataChart />
       <Blog />
+      <Leaderboard />
     </>
   );
 };
