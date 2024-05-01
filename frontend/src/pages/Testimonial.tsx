@@ -6,8 +6,8 @@ const Testimonial = () => {
     <div className="bg-gray-100 py-10 px-4 sm:px-6 lg:px-8 mt-24">
       <div className="work-section-wrapper">
         <div className="work-section-top">
-          <h1 className="flex flex-col items-center justify-center text-3xl font-bold text-gray-800 mb-4">What They Are Saying</h1>
-          <p className="text-gray-600">
+          <h1 className="flex flex-col items-center justify-center text-4xl font-semibold text-red-600">What They Are Saying</h1>
+          <p className="text-gray-600 text-center mt-9">
             Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
           </p>
         </div>
@@ -23,7 +23,7 @@ const Testimonial = () => {
                   <AiFillStar key={index} className="text-yellow-400" />
                 ))}
               </div>
-              <h2 className="text-lg font-semibold text-gray-800 text-center">John Doe</h2>
+              <h2 className="text-lg font-semibold text-red-600 text-center">John Doe</h2>
             </div>
           ))}
         </div>

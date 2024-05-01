@@ -81,7 +81,7 @@ const Navbar = () => {
               {role === "DONOR" ? (
                 <div>
                   <MenuItem
-                    onClick={() => navigate("/Leaderboard")}
+                    onClick={() => navigate("/Reward")}
                   >
                     Rewards
                   </MenuItem>

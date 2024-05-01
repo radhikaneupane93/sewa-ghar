@@ -21,7 +21,7 @@ const DonationLocations = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center mt-32">
-        <p className="text-4xl md:text-3xl xl:text-4xl font-semibold text-red-600 mb-6">
+        <p className="text-4xl font-semibold text-red-600 mb-6">
           Wondering where to Donate?
         </p>
         <p className="text-xl md:text-2xl justify-center leading-6 text-gray-700 max-w-2xl">
@@ -63,10 +63,10 @@ const LandingPage = () => {
     <>
       <div className="flex mt-[15vh] ml-5 ">
         <div className=" mt-32 ">
-          <h1 className="text-4xl md:text-3xl xl:text-4xl font-semibold text-red-600">
+          <h1 className="text-4xl font-semibold text-red-600">
             Are you ready to Donate?
           </h1>
-          <p className="mt-6 text-xl md:text-xlxl leading-6 text-gray-700 max-w-2xl">
+          <p className="mt-6 text-xl md:text-xlxl leading-6 text-gray-700 max-w-2xl text-justify">
             Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
             elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
           </p>
@@ -89,6 +89,20 @@ const LandingPage = () => {
       <DataChart />
       <Blog />
       <Leaderboard />
+      <div className="max-w-lg mx-auto p-6 border rounded shadow-lg mt-24">
+        <p className="text-lg text-center text-gray-600 mb-4">
+          If you need any clothes, please fill out the form below to request
+          them. We will contact you as soon as we receive your request.
+        </p>
+        <div className="flex justify-center">
+          <Button
+            type="submit"
+            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-400"
+          >
+            Request Clothes Now
+          </Button>
+        </div>
+      </div>
     </>
   );
 };

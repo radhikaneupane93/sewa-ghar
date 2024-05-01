@@ -11,7 +11,6 @@ const data01 = [
 ];
 
 export default class DataChart extends PureComponent {
-  static demoUrl = "https://codesandbox.io/s/two-simple-pie-chart-otx9h";
 
   render() {
     return (
@@ -26,7 +25,7 @@ export default class DataChart extends PureComponent {
                 cx="50%"
                 cy="50%"
                 outerRadius={124}
-                fill="#D2691E"
+                fill="#F57F49"
                 label
               />
               <Tooltip />
@@ -37,7 +36,7 @@ export default class DataChart extends PureComponent {
           <h1 className="text-3xl font-semibold text-red-600">
             Our Donors Contributions
           </h1>
-          <p className="mt-6 text-xl md:text-xlxl leading-6 text-gray-700 max-w-2xl">
+          <p className="mt-8 text-xl md:text-xlxl leading-6 text-gray-700 max-w-2xl text-justify">
             These are the impactful contributions made through our cloth banks.
             Each item donated represents a gesture of kindness and solidarity
             toward those less fortunate. From gently worn garments to brand new
