@@ -1,0 +1,3 @@
+{
+    "python.defaultInterpreterPath": "../backend/myprojectenv/bin/python3"
+}

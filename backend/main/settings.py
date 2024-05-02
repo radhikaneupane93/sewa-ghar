@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'users.apps.UsersConfig',
+    'requestform.apps.RequestformConfig',
     'donation.apps.DonationConfig',
     'corsheaders',
     'rest_framework',

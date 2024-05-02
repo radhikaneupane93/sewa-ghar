@@ -70,7 +70,7 @@ const Volunteering: React.FC = () => {
       </div>
       <div className="text-center mt-14">
         <p className="mb-4">Would you like to volunteer?</p>
-        <button className="bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded" onClick={() => navigate("/VolunteeForm")}>
+        <button className="bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded" onClick={() => navigate("/RequestForm")}>
           Yes, I want to volunteer
         </button>
       </div>

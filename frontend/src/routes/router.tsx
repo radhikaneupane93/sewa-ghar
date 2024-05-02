@@ -19,7 +19,7 @@ import {
   Blog,
   BlogDetail,
   DataChart,
-  VolunteerForm
+  RequestForm,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -68,8 +68,8 @@ const router = createBrowserRouter([
         element: <Volunteering />,
       },
       {
-        path: "/VolunteeForm",
-        element: <VolunteerForm />,
+        path: "/RequestForm",
+        element: <RequestForm />,
       },
       {
         path: "/Profile",

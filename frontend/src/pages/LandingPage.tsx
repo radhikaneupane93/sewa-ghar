@@ -87,8 +87,8 @@ const LandingPage = () => {
       </div>
       <DonationLocations />
       <DataChart />
-      <Blog />
       <Leaderboard />
+      <Blog />
       <div className="max-w-lg mx-auto p-6 border rounded shadow-lg mt-24">
         <p className="text-lg text-center text-gray-600 mb-4">
           If you need any clothes, please fill out the form below to request
@@ -97,7 +97,7 @@ const LandingPage = () => {
         <div className="flex justify-center">
           <Button
             type="submit"
-            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-400"
+            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-400" onClick={() => navigate('/RequestForm')}
           >
             Request Clothes Now
           </Button>
