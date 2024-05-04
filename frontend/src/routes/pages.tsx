@@ -16,7 +16,7 @@ import ClothLocationsPage from "@/pages/ClothLocationsPage";
 import AllDonations from "@/pages/AllDonations";
 import DataChart from "@/pages/DataChart";
 import RequestForm from "@/pages/RequestForm";
+import ProfileEditForm from "@/pages/ProfileEditForm";
 
-
-export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard,Reward,Profile,Blog,BlogDetail, ClothLocationsPage, AllDonations,DataChart,RequestForm}
+export{Home,About,Work,Testimonial,Contact,Login,Signup,Donation,Volunteering,Leaderboard,Reward,Profile,Blog,BlogDetail, ClothLocationsPage, AllDonations,DataChart,RequestForm,ProfileEditForm}
 

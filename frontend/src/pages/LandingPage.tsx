@@ -1,5 +1,5 @@
 import BannerBackground from "@/assets/Images/home-banner-background.png";
-import BannerImage from "@/assets/Images/home-banner-image.png";
+import BannerImage from "@/assets/Images/home-banner-image-2.png";
 import { FiArrowRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,7 @@ const DonationLocations = () => {
   ];
   return (
     <>
-      <div className="flex flex-col items-center justify-center mt-32">
+      <div className="flex flex-col items-center justify-center mt-44">
         <p className="text-4xl font-semibold text-red-600 mb-6">
           Wondering where to Donate?
         </p>
@@ -61,14 +61,19 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className="flex mt-[15vh] ml-5 ">
-        <div className=" mt-32 ">
+      <div className="flex mt-[15vh] ml-5 h-[30rem]">
+        <div className=" mt-40 ">
           <h1 className="text-4xl font-semibold text-red-600">
             Are you ready to Donate?
           </h1>
           <p className="mt-6 text-xl md:text-xlxl leading-6 text-gray-700 max-w-2xl text-justify">
             Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
             elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+            Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
+            elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+            Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
+            elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+
           </p>
 
           <Button
@@ -78,13 +83,26 @@ const LandingPage = () => {
             Donate Now <FiArrowRight />
           </Button>
         </div>
-        <div className="mt-24 ml-96 ">
-          <img src={BannerImage} alt="" className="w-inherit h-inherit" />
+        {/* <div className="mt-20 ml-72  border border-red-300">
+          <img src={BannerImage} alt="" className="w-96 h-auto" />
         </div>
         <div className=" ">
           <img src={BannerBackground} alt="background" className="size-96" />
+        </div> */}
+        <div className="container relative hidden lg:block">
+          <img
+            src={BannerImage}
+            alt=""
+            className="absolute top-44 right-44 lg:w-[28rem]  h-auto z-10"
+          />
+          <img
+            src={BannerBackground}
+            alt="background"
+            className="absolute top-0 right-0 w-80 h-full z-1"
+          />
         </div>
       </div>
+
       <DonationLocations />
       <DataChart />
       <Leaderboard />
@@ -97,7 +115,8 @@ const LandingPage = () => {
         <div className="flex justify-center">
           <Button
             type="submit"
-            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-400" onClick={() => navigate('/RequestForm')}
+            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-400"
+            onClick={() => navigate("/RequestForm")}
           >
             Request Clothes Now
           </Button>

@@ -20,6 +20,7 @@ import {
   BlogDetail,
   DataChart,
   RequestForm,
+  ProfileEditForm,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "/Profile",
         element: <Profile />,
+      },
+      {
+        path: "/ProfileEditForm",
+        element: <ProfileEditForm />,
       },
       {
         path: "/blogs",

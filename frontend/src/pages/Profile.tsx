@@ -3,8 +3,9 @@ import { Person as ProfileIcon } from "@mui/icons-material";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { selectRole, selectToken } from "@/app/slices/authSlice";
+import { selectToken } from "@/app/slices/authSlice";
 import { Button } from "@/components/ui/button";
+import ProfileEditForm from "./ProfileEditForm";
 
 interface ProfileType {
   name: string;
@@ -16,23 +17,20 @@ interface ProfileType {
 
 const Profile = () => {
   const [profileData, setProfileData] = useState<ProfileType | null>(null);
+  const [editMode, setEditMode] = useState(false); // Define edit mode state
   const token = useSelector(selectToken);
-  const role = useSelector(selectRole);
 
   const fetchProfileData = async () => {
-    await axios
-      .get("http://127.0.0.1:8000/users/api/user/", {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/users/api/user/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      })
-      .then((res) => {
-        setProfileData(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        toast.error(err);
       });
+      setProfileData(response.data);
+    } catch (error) {
+      toast.error("Error");
+    }
   };
 
   useEffect(() => {
@@ -40,6 +38,21 @@ const Profile = () => {
       fetchProfileData();
     }
   }, [token]);
+
+  const handleProfileUpdate = async (updatedData: ProfileType) => {
+    try {
+      const response = await axios.put("http://127.0.0.1:8000/users/api/user/", updatedData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setProfileData(response.data);
+      toast.success("Profile updated successfully!");
+      setEditMode(false); 
+    } catch (error) {
+      toast.error("Error while updating Profile");
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto mt-40">
@@ -69,18 +82,23 @@ const Profile = () => {
                 <span className="font-bold">Phone:</span>{" "}
                 {profileData.phonenumber}
               </div>
-              {role === "DONOR" && (
-                <div style={{ marginBottom: "10px" }}>
-                  <span className="font-bold">Points:</span>{" "}
-                  {profileData.points}
-                </div>
-              )}
             </div>
             <div className="flex justify-center mt-4">
-              <Button className="bg-orange-500 hover:bg-orange-300 mt-6">
-                Edit Profile
-              </Button>
+              {!editMode && ( // Render edit profile button only if not in edit mode
+                <Button
+                  onClick={() => setEditMode(true)} // Set edit mode to true when button clicked
+                  className="bg-orange-500 hover:bg-orange-300 mt-6"
+                >
+                  Edit Profile
+                </Button>
+              )}
             </div>
+            {editMode && ( 
+              <ProfileEditForm
+                profileData={profileData}
+                onSubmit={handleProfileUpdate}
+              />
+            )}
           </div>
         )}
       </div>
