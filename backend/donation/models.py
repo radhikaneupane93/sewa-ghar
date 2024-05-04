@@ -1,4 +1,5 @@
 import datetime
+from typing import Any
 from django.db import models
 from users.models import CustomUser
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -37,3 +38,30 @@ class Donation(models.Model):
 
     def __str__(self):
         return f"Donation by {self.donated_by} of type {self.cloth_type} to {self.cloth_bank}"
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        
+        
+#  high_value = ['Coat/Jacket', 'Suit', 'Blazer', 'Winter Coat','Blankets']
+#     medium_value = ['Sweater', 'Jeans', 'Skirt', 'Pants/Trousers', 'Cardigan', 
+#                     'Jumpsuit', 'Hoodie', 'Raincoat', 'Tracksuit', 
+#                     'Athletic wear', 'Uniform', 'Apron']
+#     low_value = ['Shirt', 'Blouse', 'Vest', 'Leggings', 'T-shirt', 'Tank top', 'Polo shirt', 
+#                   'Pajamas', 'Nightgown', 
+#          ']
+#     basic_necessities = ['Socks', 'Handkerchief', 'Gloves', 'Hat/Cap', 'Scarf', 'Shawl', 
+#                          , 'Bedspread', 'Pillowcase', 'Bed sheet', 'Towel', 'Bathrobe', 
+#                          'Washcloth', 'Dishcloth', 'Tablecloth', 'Napkin', 'Curtains', 'Apron']
+#     miscellaneous = [.........]
+
+#     if cloth_type in high_value:
+#         return 12
+#     elif cloth_type in medium_value:
+#         return 8
+#     elif cloth_type in low_value:
+#         return 5
+#     elif cloth_type in basic_necessities:
+#         return 3
+#     elif cloth_type in miscellaneous:
+#         return 3  # Or any other value you want for miscellaneous items

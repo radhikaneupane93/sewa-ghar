@@ -14,15 +14,17 @@ class DonationViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def create(self, request):
-        serializer = self.serializer_class(data=request.data)
+        print(request.data)
+        # serializer = self.serializer_class(data=request.data)
+        
 
-        if serializer.is_valid():
-            serializer.save(donated_by = request.user)
+        # if serializer.is_valid():
+        #     serializer.save(donated_by = request.user)
 
-            request.user.points += 10
-            request.user.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        #     request.user.points += 10
+        #     request.user.save()
+        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class DonationListView(generics.ListAPIView):
      queryset = Donation.objects.all().order_by('-id')

@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import RequestFormView
+from . import views
 
 urlpatterns = [
-    path('request-form/', RequestFormView.as_view(), name='request-form'),
+    path('request-form/', views.RequestFormView.as_view(), name='request-form'),
 ]
+

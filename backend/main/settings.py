@@ -40,12 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    
     'users.apps.UsersConfig',
     'requestform.apps.RequestformConfig',
     'donation.apps.DonationConfig',
+    
     'corsheaders',
+    
     'rest_framework',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    
+    'notifications',
+    'channels',
 ]
 
 REST_FRAMEWORK = {
