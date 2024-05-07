@@ -13,6 +13,7 @@ from datetime import timedelta
 import environ
 import os
 from pathlib import Path
+from .jazminn import JAZZMIN_SETTINGS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +34,7 @@ SITE_ID=1
 
 # Application definition
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -148,6 +150,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR/"static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -159,3 +162,6 @@ AUTH_USER_MODEL = 'users.CustomUser'
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
+#Rest Framework 
+
+JAZZMIN_SETTINGS = JAZZMIN_SETTINGS

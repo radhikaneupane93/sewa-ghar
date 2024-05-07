@@ -1,0 +1,28 @@
+/* Target the buttons using their class names */
+.btn {
+  background-color: #F57F49 !important; /* Set background color to orange */
+  border-color: white !important; /* Set border color to orange */
+  color: white !important; /* Set text color to white for better contrast */
+}
+
+.blue-text {
+    color: red !important;
+}
+
+.nav-link
+{
+    background-color: transparent;
+    color: white; /* Adjust to a suitable contrasting color */
+}
+.nav-link:active {
+    background-color: red !important;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active  {
+    background-color: red !important;
+}
+a{
+    color: red !important;
+}
+.nav-link{
+    color: #C7C0D0 !important;
+}
