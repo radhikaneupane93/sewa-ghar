@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from .add_cloth_banks import donation_banks_data
 from django.http import HttpResponse
+from django.core.mail import send_mail
 
 class DonationViewSet(viewsets.ModelViewSet):
     queryset = Donation.objects.all().order_by('-donation_date')
@@ -34,6 +35,7 @@ class ClothBankViewSet(viewsets.ModelViewSet):
     queryset = ClothBank.objects.all()
     serializer_class = ClothBankSerializer
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def verify_donation(request):
@@ -51,13 +53,21 @@ def verify_donation(request):
             # Check if the authenticated user has the role 'CLOTHBANKADMIN'
             if request.user.role != CustomUser.Role.CLOTHBANKADMIN:
                 return Response({"error": "You do not have permission to verify donations"}, status=status.HTTP_403_FORBIDDEN)
-            
+            donated_by = donation.donated_by.email
+            donated_to = donation.cloth_bank.title
+            subject = f"Donation Verified {donated_to}"
+            message = f"Dear {donation.donated_by.name},  Your cloth donation has been verified by {donated_to}"
             donation.status = new_status
             donation.save()
+            try:
+                send_mail(subject=subject, message=message,from_email="parikshitmaharjan78@gmail.com", recipient_list=[donated_by])
+            except Exception as e:
+                return Response({"error": f"{e}", "message": "Donation Verified Successfully"}, status=status.HTTP_200_OK)
 
-            return Response({"message": "Donation verified successfully"}, status=status.HTTP_200_OK)
+            return Response({"message": "Email Sent. Donation verified successfully"}, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 @api_view(['GET'])
