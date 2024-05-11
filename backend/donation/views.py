@@ -21,7 +21,6 @@ class DonationViewSet(viewsets.ModelViewSet):
 
         if serializer.is_valid():
             serializer.save(donated_by = request.user)
-
             request.user.points += 10
             request.user.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -60,7 +59,7 @@ def verify_donation(request):
             donation.status = new_status
             donation.save()
             try:
-                send_mail(subject=subject, message=message,from_email="parikshitmaharjan78@gmail.com", recipient_list=[donated_by])
+                send_mail(subject=subject, message=message,from_email="np03cs4s220226@heraldcollege.edu.np", recipient_list=[donated_by])
             except Exception as e:
                 return Response({"error": f"{e}", "message": "Donation Verified Successfully"}, status=status.HTTP_200_OK)
 

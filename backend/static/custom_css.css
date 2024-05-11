@@ -1,28 +1,40 @@
-/* Target the buttons using their class names */
 .btn {
-  background-color: #F57F49 !important; /* Set background color to orange */
-  border-color: white !important; /* Set border color to orange */
-  color: white !important; /* Set text color to white for better contrast */
+  background-color: #f57f49;
+  border-color: white;
+  color: white;
 }
 
-.blue-text {
-    color: red !important;
+.nav-link {
+  color: #c7c0d0;
 }
 
-.nav-link
-{
-    background-color: transparent;
-    color: white; /* Adjust to a suitable contrasting color */
+.nav-link:active,
+.sidebar-dark-primary .nav-sidebar .nav-item .nav-link.active {
+  background-color: red;
 }
-.nav-link:active {
-    background-color: red !important;
+
+.sidebar-dark-primary .nav-sidebar .nav-item:hover .nav-link {
+  color: #fff;
 }
-.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active  {
-    background-color: red !important;
+
+a {
+  color: red;
 }
-a{
-    color: red !important;
+
+.logo-xl,
+.main-sidebar .logo-xs,
+.sidebar .user-panel .info {
+  transition: margin-left 0.3s linear, opacity 0.3s ease, visibility 0.3s ease;
 }
-.nav-link{
-    color: #C7C0D0 !important;
+
+.sidebar .nav-link p {
+  color: white;
+}
+
+.nav-link,
+.accent-primary
+  a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link):not(
+    .page-link
+  ):not(.btn) {
+  color: gray;
 }
