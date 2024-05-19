@@ -33,7 +33,7 @@ export default class DataChart extends PureComponent {
           </ResponsiveContainer>
         </div>
         <div className="w-1/2 p-4 mt-24">
-          <h1 className="text-3xl font-semibold text-red-600">
+          <h1 className="text-4xl font-semibold text-red-600 mb-6">
             Our Donors Contributions
           </h1>
           <p className="mt-8 text-xl md:text-xlxl leading-6 text-gray-700 max-w-2xl text-justify">

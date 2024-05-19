@@ -82,6 +82,10 @@ const Profile = () => {
                 <span className="font-bold">Phone:</span>{" "}
                 {profileData.phonenumber}
               </div>
+              <div style={{ marginBottom: "10px" }}>
+                <span className="font-bold">Donation Points:</span>{" "}
+                {profileData.points}
+              </div>
             </div>
             <div className="flex justify-center mt-4">
               {!editMode && ( // Render edit profile button only if not in edit mode

@@ -14,4 +14,5 @@ urlpatterns = [
     path('addclothbanks/', populate_clothBank, name='add_cloth_banks'),
     path('verify-donation/', verify_donation, name='verify_donation'),
     path('alldonations/', DonationListView.as_view(), name='donation-list'),
+     path('create-donation/', DonationViewSet.as_view({'post': 'create_donation'}), name='create_donation'),
 ]

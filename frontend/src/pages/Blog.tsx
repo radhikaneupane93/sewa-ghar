@@ -61,7 +61,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="container flex flex-col items-center justify-center mt-12">
+    <div className="container flex flex-col items-center justify-center mt-16">
       <p className="text-4xl md:text-3xl xl:text-4xl font-semibold text-red-600 mb-6">
         Our Blogs
       </p>

@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from .add_cloth_banks import donation_banks_data
 from django.http import HttpResponse
+from rest_framework.decorators import action
 from django.core.mail import send_mail
 
 class DonationViewSet(viewsets.ModelViewSet):
@@ -25,6 +26,10 @@ class DonationViewSet(viewsets.ModelViewSet):
             request.user.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    def create_donation(self, request):
+        return self.create(request)
 
 class DonationListView(generics.ListAPIView):
      queryset = Donation.objects.all().order_by('-id')
@@ -55,7 +60,7 @@ def verify_donation(request):
             donated_by = donation.donated_by.email
             donated_to = donation.cloth_bank.title
             subject = f"Donation Verified {donated_to}"
-            message = f"Dear {donation.donated_by.name},  Your cloth donation has been verified by {donated_to}"
+            message = f"Dear {donation.donated_by.name},  Your cloth donation has been verified by {donated_to}.You are requested to bring your clothes within one week. If you encounter any issues, please contact us as soon as possible. "
             donation.status = new_status
             donation.save()
             try:

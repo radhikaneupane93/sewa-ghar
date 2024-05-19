@@ -30,6 +30,7 @@ const Navbar = () => {
         <img className="h-[60px]" src={Logo} alt="" />
       </div>
       <div className="flex gap-12 font-semibold cursor-pointer">
+        <p onClick={() => navigate("/")}>Home</p>
         <p onClick={() => navigate("/about")}>About</p>
         <p onClick={() => navigate("/testimonial")}>Testimonial</p>
         <p onClick={() => navigate("/contact")}>Contact</p>

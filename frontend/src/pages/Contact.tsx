@@ -1,6 +1,6 @@
 const Contact = () => {
   return (
-    <div className="contact-page-wrapper bg-gray-100 py-44 px-4 sm:px-6 lg:px-8 align-middle mt-32 text-center">
+    <div className="contact-page-wrapper bg-gray-100 py-44 px-4 sm:px-6 lg:px-8 align-middle mt-12 text-center">
       <h1 className="text-3xl font-bold text-red-600 mb-4">Have Question In Mind?</h1>
       <h1 className="text-3xl font-bold text-red-600 mb-4">Let Us Help You</h1>
       <div className="contact-form-container mt-8">
