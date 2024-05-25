@@ -35,8 +35,31 @@ class CustomUserSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()    
     password = serializers.CharField(write_only=True)
+    
+    
+class ChangePasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+
+class ResetPasswordEmailSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=True)
 
 class LeaderBoardSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['name', 'address', 'points']
+
+class UpdateProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['name', 'address', 'phonenumber']
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.address = validated_data.get('address', instance.address)
+        instance.phonenumber = validated_data.get('phonenumber', instance.phonenumber)
+        instance.save()
+        return instance
+        
+class DeleteUserSerializer(serializers.Serializer):
+    pass

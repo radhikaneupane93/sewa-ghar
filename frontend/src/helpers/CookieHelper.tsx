@@ -1,13 +1,11 @@
 const CookieHelper = (() => {
-    const cookie = document.cookie;
-
     const setCookie = (name: string, value: string, days: number) => {
         const expires = new Date(Date.now() + days * 864e5).toUTCString();
         document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires;
     };
 
     const getCookie = (c_name: string) => {
-        const ls = cookie.split(';');
+        const ls = document.cookie.split(';'); 
         const reqCookie = ls.find((c) => c.includes(c_name));
         if (reqCookie) {
             return reqCookie.split('=')[1];
@@ -20,7 +18,7 @@ const CookieHelper = (() => {
     };
 
     const deleteAllCookies = () => {
-        const cookies = document.cookie.split(';');
+        const cookies = document.cookie.split(';'); 
 
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i];

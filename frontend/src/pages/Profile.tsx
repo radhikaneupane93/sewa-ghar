@@ -5,7 +5,20 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { selectToken } from "@/app/slices/authSlice";
 import { Button } from "@/components/ui/button";
-import ProfileEditForm from "./ProfileEditForm";
+import ConfirmationModel from "./ConfirmationModel";
+import { useNavigate } from "react-router-dom";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useForm } from "react-hook-form";
 
 interface ProfileType {
   name: string;
@@ -13,23 +26,35 @@ interface ProfileType {
   email: string;
   phonenumber: string | null;
   points: string | null;
+  role: string | null;
+}
+
+interface ProfileEditForm {
+  name: string;
+  address: string;
+  phonenumber: string;
 }
 
 const Profile = () => {
   const [profileData, setProfileData] = useState<ProfileType | null>(null);
-  const [editMode, setEditMode] = useState(false); // Define edit mode state
+  const { register, handleSubmit, reset } = useForm<ProfileEditForm>();
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const token = useSelector(selectToken);
+  const navigate = useNavigate();
 
   const fetchProfileData = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/users/api/user/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "http://127.0.0.1:8000/users/api/user/",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setProfileData(response.data);
     } catch (error) {
-      toast.error("Error");
+      toast.error("Error fetching profile data");
     }
   };
 
@@ -39,18 +64,35 @@ const Profile = () => {
     }
   }, [token]);
 
-  const handleProfileUpdate = async (updatedData: ProfileType) => {
+  const updateProfile = async (data: any) => {
     try {
-      const response = await axios.put("http://127.0.0.1:8000/users/api/user/", updatedData, {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/users/api/update-profile/",
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success("Profile updated successfully");
+      navigate('/')
+    } catch (error) {
+      toast.error("Error updating profile data");
+    }
+  };
+
+  const handleAccountDeletion = async () => {
+    try {
+      await axios.delete("http://127.0.0.1:8000/users/delete-user/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setProfileData(response.data);
-      toast.success("Profile updated successfully!");
-      setEditMode(false); 
+      toast.success("Account deleted successfully");
+      navigate("/Login");
     } catch (error) {
-      toast.error("Error while updating Profile");
+      toast.error("Error deleting account");
     }
   };
 
@@ -71,41 +113,94 @@ const Profile = () => {
               <div>
                 <div className="text-xl font-bold">{profileData.name}</div>
                 <div className="text-lg text-gray-500">{profileData.email}</div>
+                <div className="text-lg text-gray-500">{profileData.role}</div>
               </div>
             </div>
             <div className="flex-column column-gap-10px mt-10">
               <div style={{ marginBottom: "10px" }}>
-                <span className="font-bold">Address:</span>{" "}
-                {profileData.address}
+                <span className="font-bold">Address:</span> {profileData.address}
               </div>
               <div style={{ marginBottom: "10px" }}>
-                <span className="font-bold">Phone:</span>{" "}
-                {profileData.phonenumber}
+                <span className="font-bold">Phone:</span> {profileData.phonenumber}
               </div>
               <div style={{ marginBottom: "10px" }}>
-                <span className="font-bold">Donation Points:</span>{" "}
-                {profileData.points}
+                <span className="font-bold">Donation Points:</span> {profileData.points}
               </div>
             </div>
-            <div className="flex justify-center mt-4">
-              {!editMode && ( // Render edit profile button only if not in edit mode
-                <Button
-                  onClick={() => setEditMode(true)} // Set edit mode to true when button clicked
-                  className="bg-orange-500 hover:bg-orange-300 mt-6"
-                >
-                  Edit Profile
-                </Button>
-              )}
+            <div className="flex justify-center mt-4 space-x-4">
+              <>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" className="bg-orange-500 hover:bg-orange-400 text-white">Edit Profile</Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <form onSubmit={handleSubmit(updateProfile)}>
+                      <DialogHeader>
+                        <DialogTitle>Edit profile</DialogTitle>
+                        <DialogDescription>
+                          Make changes to your profile here. Click save when
+                          you're done.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="name" className="text-right">
+                            Name
+                          </Label>
+                          <Input
+                            id="name"
+                            defaultValue={profileData.name}
+                            className="col-span-3"
+                            {...register("name")}
+                          />
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="address" className="text-right">
+                            Address
+                          </Label>
+                          <Input
+                            id="address"
+                            defaultValue={profileData.address ?? ""}
+                            className="col-span-3"
+                            {...register("address")}
+                          />
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="phonenumber" className="text-right">
+                            Phone number
+                          </Label>
+                          <Input
+                            id="phonenumber"
+                            defaultValue={profileData.phonenumber ?? ""}
+                            className="col-span-3"
+                            {...register("phonenumber")}
+                          />
+                        </div>
+                      </div>
+                      <DialogFooter>
+                        <Button type="submit" className="bg-orange-500 hover:bg-orange-400 text-white">Save changes</Button>
+                      </DialogFooter>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </>
+              <Button
+                onClick={() => setConfirmDelete(true)}
+                className="bg-orange-500 hover:bg-orange-400 text-white"
+              >
+                Delete Account
+              </Button>
             </div>
-            {editMode && ( 
-              <ProfileEditForm
-                profileData={profileData}
-                onSubmit={handleProfileUpdate}
-              />
-            )}
           </div>
         )}
       </div>
+      <ConfirmationModel
+        open={confirmDelete}
+        onClose={() => setConfirmDelete(false)}
+        onConfirm={handleAccountDeletion}
+        title="Confirm Account Deletion"
+        description="Are you sure you want to delete your account? This action cannot be undone."
+      />
     </div>
   );
 };

@@ -71,11 +71,17 @@ function AllDonations() {
     }, [token])
 
     return (
-        <div className="flex mt-36">
+        <>
+        <div className="flex flex-col items-center justify-center mt-32">
+        <p className="text-4xl text-red-500 mb-6">
+          Donation Request Form Donors
+        </p>
+        </div>
+        <div className="flex mt-4">
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead className="w-[100px]">Donated By</TableHead>
+                        <TableHead className="w-[150px]">Donated By</TableHead>
                         <TableHead>Cloth Type</TableHead>
                         <TableHead>Cloth Bank</TableHead>
                         <TableHead>No. of Clothes</TableHead>
@@ -109,6 +115,7 @@ function AllDonations() {
                 </TableBody>
             </Table>
         </div>
+        </>
     );
 }
 

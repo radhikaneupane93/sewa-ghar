@@ -20,7 +20,9 @@ import {
   BlogDetail,
   DataChart,
   RequestForm,
-  ProfileEditForm,
+  ForgotPasswordPage,
+  ResetPasswordPage,
+  ConfirmationModel,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -77,10 +79,6 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "/ProfileEditForm",
-        element: <ProfileEditForm />,
-      },
-      {
         path: "/blogs",
         element: <Blog />,
       },
@@ -100,6 +98,19 @@ const router = createBrowserRouter([
         path: "/DataChart",
         element: < DataChart />,
       },
+      {
+        path: "/ForgotPassword",
+        element: < ForgotPasswordPage />,
+      },
+      {
+        path: "/ResetPassword/:token",
+        element: < ResetPasswordPage />,
+      },
+      {
+        path: "/ConfirmationModel",
+        element: < ConfirmationModel />,
+      },
+    
     ],
   },
   {

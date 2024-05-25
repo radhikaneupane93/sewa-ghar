@@ -36,6 +36,7 @@ const Donation = () => {
 
   const onSubmitHandler = (data: FieldValues) => {
     const token = CookieHelper.getCookie("token");
+    console.log(token);
     console.log(data);
     axios
       .post("http://127.0.0.1:8000/donation/donations/", data, {
@@ -44,9 +45,8 @@ const Donation = () => {
         },
       })
       .then((res) => {
-        toast.success("Donated successfully!");
+        toast.success("Donated successfully! Visit to the Cloth Bank as soon as possible ");
         navigate("/");
-        toast.info("You've obtained 10 points");
       })
       .catch((err) => {
         toast.error(err);

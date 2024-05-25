@@ -3,7 +3,11 @@ import Logo from "@/assets/Images/Logo.png";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSelector, useDispatch } from "react-redux";
-import { selectIsAuthenticated, logout, selectRole } from "@/app/slices/authSlice";
+import {
+  selectIsAuthenticated,
+  logout,
+  selectRole,
+} from "@/app/slices/authSlice";
 import { toast } from "react-toastify";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Menu from "@mui/material/Menu";
@@ -16,7 +20,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -27,7 +31,7 @@ const Navbar = () => {
   return (
     <nav className="flex z-50 fixed top-0 bg-white shadow-md p-5 px-18 max-h-[%60] overflow-hidden w-full justify-between items-center">
       <div onClick={() => navigate("/")} className="h-full cursor-pointer">
-        <img className="h-[60px]" src={Logo} alt="" />
+        <img className="h-[60px]" src={Logo} alt="Logo" />
       </div>
       <div className="flex gap-12 font-semibold cursor-pointer">
         <p onClick={() => navigate("/")}>Home</p>
@@ -71,18 +75,21 @@ const Navbar = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem
-                onClick={() => {
-                  navigate("/Profile");
-                }}
-              >
-                My Profile
-              </MenuItem>
-
               {role === "DONOR" ? (
                 <div>
                   <MenuItem
-                    onClick={() => navigate("/Reward")}
+                    onClick={() => {
+                      handleClose();
+                      navigate("/Profile");
+                    }}
+                  >
+                    My Profile
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                      navigate("/Reward");
+                    }}
                   >
                     Rewards
                   </MenuItem>
@@ -95,22 +102,23 @@ const Navbar = () => {
                     Volunteering
                   </MenuItem>
                 </div>
-              ):(
+              ) : (
                 <div>
-                <MenuItem
-                  onClick={() => navigate("/all-donations")}
-                >
-                  Donation Requests
-                </MenuItem>
-              </div>
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                      navigate("/all-donations");
+                    }}
+                  >
+                    Donation Requests
+                  </MenuItem>
+                </div>
               )}
-
-
               <MenuItem
                 onClick={() => {
                   handleClose();
                   dispatch(logout());
-                  navigate("/Login")
+                  navigate("/Login");
                   toast.success("Logged out Successfully!");
                 }}
               >
@@ -125,3 +133,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
